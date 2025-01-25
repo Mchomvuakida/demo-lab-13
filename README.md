@@ -29,23 +29,23 @@ This project is a Spring Boot application using SQLite as the database, Hibernat
   - spring.jpa.database-platform=org.hibernate.community.dialect.SQLiteDialect
 
 ### Folder Structure
-src/main/java: Application source code
-src/main/resources: Configuration files and static assets
-src/test: Unit and integration tests
+- src/main/java: Application source code
+- src/main/resources: Configuration files and static assets
+- src/test: Unit and integration tests
 
 ### Key Dependencies
-Spring Boot Starter Web: For building RESTful APIs.
-Spring Boot Starter Data JPA: For database interactions with Hibernate.
-SQLite JDBC Driver: Lightweight database solution.
-Flyway: For database migrations.
-Lombok: Reduces boilerplate code.
+- Spring Boot Starter Web: For building RESTful APIs.
+- Spring Boot Starter Data JPA: For database interactions with Hibernate.
+- SQLite JDBC Driver: Lightweight database solution.
+- Flyway: For database migrations.
+- Lombok: Reduces boilerplate code.
 
 ### Contributing
-Fork the repository.
-Create a new branch (git checkout -b feature/your-feature).
-Commit your changes (git commit -m "Add a new feature").
-Push to the branch (git push origin feature/your-feature).
-Open a pull request.
+- Fork the repository.
+- Create a new branch (git checkout -b feature/your-feature).
+- Commit your changes (git commit -m "Add a new feature").
+- Push to the branch (git push origin feature/your-feature).
+- Open a pull request.
 
 ### License
 This project is licensed under the MIT License.
