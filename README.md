@@ -24,9 +24,9 @@ This project is a Spring Boot application using SQLite as the database, Hibernat
 
 ### Database Configuration
 - The project uses SQLite by default. Ensure that the database file is located as configured in application.properties:
-  spring.datasource.url=jdbc:sqlite:./database/app.db
-  spring.datasource.driver-class-name=org.sqlite.JDBC
-  spring.jpa.database-platform=org.hibernate.community.dialect.SQLiteDialect
+  - spring.datasource.url=jdbc:sqlite:./database/app.db
+  - spring.datasource.driver-class-name=org.sqlite.JDBC
+  - spring.jpa.database-platform=org.hibernate.community.dialect.SQLiteDialect
 
 ### Folder Structure
 src/main/java: Application source code
