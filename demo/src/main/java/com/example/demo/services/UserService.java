@@ -2,28 +2,28 @@ package com.example.demo.services;
 
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
-
-    public User createUser(String username, String email, String password) {
-        User user = new User();
-        user.setUsername(username);
-        user.setEmail(email);
-        user.setPassword(passwordEncoder.encode(password));
-        return userRepository.save(user);
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    public boolean authenticate(String email, String password) {
-        User user = userRepository.findByEmail(email);
-        return user != null && passwordEncoder.matches(password, user.getPassword());
+    public User createUser(User user) {
+        // Check if user exists
+        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+            throw new RuntimeException("User already exists with this email.");
+        }
+
+        // Hash the password before saving
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        return userRepository.save(user); // Save and return the user object
     }
 }
