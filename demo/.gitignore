@@ -41,6 +41,6 @@ out/
 
 # SQLite database files
 *.db
-
+database.db
 # Log files
 *.log
