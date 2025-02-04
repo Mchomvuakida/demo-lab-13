@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 @Getter
@@ -27,5 +29,7 @@ public class User {
     @Size(min = 8, message = "Password must be at least 8 characters long")
     private String password;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Task> tasks;
 }
 

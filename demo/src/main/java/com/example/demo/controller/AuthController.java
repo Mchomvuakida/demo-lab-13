@@ -10,6 +10,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -46,5 +48,10 @@ public class AuthController {
         } catch (AuthenticationException e) {
             return ResponseEntity.status(401).body("Invalid credentials");
         }
+    }
+    @GetMapping("/users")
+    public ResponseEntity<?> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        return ResponseEntity.ok(users);
     }
 }

@@ -22,8 +22,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll() // Allow all requests without authentication
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -31,6 +30,8 @@ public class SecurityConfig {
 
         return http.build();
     }
+
+
     @Bean
     public AuthenticationManager authenticationManager(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
